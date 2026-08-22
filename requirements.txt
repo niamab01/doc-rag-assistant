@@ -5,3 +5,4 @@ pymupdf
 sentence-transformers
 chromadb
 streamlit
+dotenv
