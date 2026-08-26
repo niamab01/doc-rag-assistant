@@ -11,19 +11,36 @@ Financial professionals waste significant time digging through hundreds of pages
 ![demo](assets/demo.png)
 
 ## Architecture
-PDF
-↓
-Parsing (PyMuPDF) + Table extraction + Repeated header removal
-↓
+
+```
+PDF Document
+    │
+    ▼
+Parsing (PyMuPDF) + Table Extraction
+    │
+    ▼
+Repeated Header Removal (auto-detected)
+    │
+    ▼
 Chunking (RecursiveCharacterTextSplitter)
-↓
-Multilingual Embeddings (paraphrase-multilingual-MiniLM-L12-v2)
-↓
-Vector Store (ChromaDB)
-↓
-User Question → Hybrid Retrieval (BM25 + Vector similarity) → Top chunks
-↓
-Prompt + Context → LLM (Mistral 7B via Ollama) → Answer
+    │
+    ▼
+Multilingual Embeddings ──────────► ChromaDB
+                                       │
+User Question                          │
+    │                                  │
+    ▼                                  ▼
+Hybrid Retrieval ◄──── BM25 + Vector Similarity
+    │
+    ▼
+Top Chunks + Prompt
+    │
+    ▼
+Mistral 7B (Ollama, local)
+    │
+    ▼
+Answer with Sources
+```
 ## Key Features
 
 - **Smart PDF extraction**: extracts both raw text and structured table data from financial documents
