@@ -99,7 +99,7 @@ echo "HUGGINGFACEHUB_API_TOKEN=your_token_here" > .env
 streamlit run app/ui.py
 ```
 
-Open `http://localhost:8501`, upload a financial PDF, click "Process Document", and start asking questions.
+Open `http://localhost:8501`, upload a PDF, click "Process Document", and start asking questions.
 
 ## Confidentiality
 
