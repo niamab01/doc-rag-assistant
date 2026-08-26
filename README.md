@@ -11,21 +11,19 @@ Financial professionals waste significant time digging through hundreds of pages
 ![demo](assets/demo.png)
 
 ## Architecture
-                    PDF
-                     ↓
-  Parsing (PyMuPDF) + Table extraction + Repeated header removal
-                     ↓
-    Chunking (RecursiveCharacterTextSplitter)
-                     ↓
-  Multilingual Embeddings (paraphrase-multilingual-MiniLM-L12-v2)
-                     ↓
-          Vector Store (ChromaDB)
-                     ↓
+PDF
+↓
+Parsing (PyMuPDF) + Table extraction + Repeated header removal
+↓
+Chunking (RecursiveCharacterTextSplitter)
+↓
+Multilingual Embeddings (paraphrase-multilingual-MiniLM-L12-v2)
+↓
+Vector Store (ChromaDB)
+↓
 User Question → Hybrid Retrieval (BM25 + Vector similarity) → Top chunks
-                     ↓
-   Prompt + Context → LLM (Mistral 7B via Ollama) → Answer
-
-
+↓
+Prompt + Context → LLM (Mistral 7B via Ollama) → Answer
 ## Key Features
 
 - **Smart PDF extraction**: extracts both raw text and structured table data from financial documents
@@ -58,8 +56,8 @@ User Question → Hybrid Retrieval (BM25 + Vector similarity) → Top chunks
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/financial-doc-analyzer.git
-cd financial-doc-analyzer
+git clone https://github.com/nb-ops2/doc-rag-assistant.git
+cd doc-rag-assistant
 
 # Create and activate virtual environment
 python -m venv venv
@@ -104,4 +102,3 @@ No document content, query, or response is ever sent to an external API or cloud
 - **Single document**: currently supports one PDF at a time (planned: multi-document comparison for cross-year analysis)
 - **OCR**: scanned/image-only PDFs are not yet supported (planned: automatic detection and Tesseract/PyMuPDF OCR fallback)
 
-Remplace YOUR_USERNAME par ton pseudo GitHub, prends une capture d'écran de Streamlit pour le demo, et pousse. Prochaine étape : Phase 7 — le push GitHub propre.
